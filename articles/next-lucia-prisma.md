@@ -48,7 +48,6 @@ pnpm dlx supabase init
 pnpm dlx supabase start
 ```
 
-```bash
 ::::details 🛑 停止する場合
 ローカル環境の[Supabase](https://supabase.com/)を停止する場合は以下のコマンドを実行してください。
 ```bash
