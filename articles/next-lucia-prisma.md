@@ -197,9 +197,6 @@ export async function GET(): Promise<Response> {
 	const state = generateState();
 	const url = await github.createAuthorizationURL(state);
 
-	console.log("state", state);
-	console.log("url", url);
-
 	cookies().set("github_oauth_state", state, {
 		path: "/",
 		secure: process.env.NODE_ENV === "production",
@@ -259,7 +256,6 @@ export async function GET(request: Request): Promise<Response> {
     let userId: string;
     if (existingUser) {
       userId = existingUser.id;
-      console.log("Existing user found", { userId });
     } else {
       userId = generateIdFromEntropySize(10);
       await db.user.create({
