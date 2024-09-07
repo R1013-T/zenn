@@ -76,7 +76,7 @@ datasource db {
 model User {
   id       String    @id
   sessions Session[]
-  githubId String       @unique
+  githubId Int       @unique
   username String
 }
 
@@ -250,7 +250,7 @@ export async function GET(request: Request): Promise<Response> {
 
     const githubUser: GitHubUser = await githubUserResponse.json();
     const existingUser = await db.user.findUnique({
-      where: { githubId: githubUser.id.toString() },
+      where: { githubId: githubUser.id. },
     });
 
     let userId: string;
@@ -261,7 +261,7 @@ export async function GET(request: Request): Promise<Response> {
       await db.user.create({
         data: {
           id: userId,
-          githubId: githubUser.id.toString(),
+          githubId: githubUser.id,
           username: githubUser.login,
         },
       });    }
